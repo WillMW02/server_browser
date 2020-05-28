@@ -1,3 +1,4 @@
+serverBrowser = serverBrowser or {}
 
 if SERVER then AddCSLuaFile("server_browser/browser_config.lua") end
 include("server_browser/browser_config.lua")
@@ -11,4 +12,9 @@ if SERVER then
 else
     include("server_browser/client/cl_networking.lua")
     include("server_browser/vgui/cl_main.lua")
+
+    for k,v in pairs(serverBrowser.servers) do
+        loadUrl(v.imageUrl)
+    end
+
 end
